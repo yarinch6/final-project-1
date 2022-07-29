@@ -50,6 +50,21 @@ app.get('/getProduct', (req, res) => {
   myProduct();
 })
 
+app.get('/getOrder', (req,res) => {
+  var newOrder = {
+    product:req.query.productsInCart,
+    totalPrice:req.query.price
+  }
+
+  async function mysave1(orderDetails) {
+    await mydb.saveOrder(orderDetails).then((result) => res.send(result));
+  }
+
+  mysave1(newOrder);
+})
+
+
+
 
 
 

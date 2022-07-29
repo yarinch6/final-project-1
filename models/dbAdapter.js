@@ -43,6 +43,16 @@ async function getProducts() {
     return res;
 }
 
+async function saveOrder(orderDetails) {
+    var Client = new MongoClient(uri);
+    await Client.connect();
+    var col = Client.db("SukenikHairDesign").collection("orders");
+    var result = await col.insertOne(orderDetails);
+    Client.close();
+    return result;
+}
+
 exports.findName = findMongoDoc;
 exports.saveCandidate = saveCandidate;
 exports.getProducts = getProducts;
+exports.saveOrder = saveOrder;

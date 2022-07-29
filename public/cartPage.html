@@ -38,8 +38,22 @@
 			</li>
 		</ul>
 	</div>
-	<div id="mainContent"> sukenikhairdesign </div>
-	<div id="footer">
+	<form action="/getOrder" method="get">
+		<div class="products-container">
+			<div class="product-header">
+				<h5 class="product-title">PRODUCT</h5>
+				<h5 class="price1">PRICE</h5>
+				<h5 class="quantity1">QUANTITY</h5>
+				<h5 class="total1">TOTAL</h5>
+			</div>
+			<div class="products">
+				
+			</div>
+			<input type="submit" name="send" id="send" value="send">
+		</div>
+	</form>	
+    
+    <div id="footer">
 		<div>
 			<p>&copy; 2023 by Mustacchio. All rights reserved.</p>
 			<ul>
@@ -68,9 +82,9 @@
   			.then(data => document.getElementById("mainContent").innerHTML=data);
 		}
 
-		if(isNew) {
-			fetchPage('homePage.html')
-		}
+		// if(isNew) {
+		// 	fetchPage('homePage.html')
+		// }
 	</script>
 
 	<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
