@@ -11,7 +11,7 @@ let Products = [
     {
         name : 'Beard Foam',
         tag : 'foam',
-        price : 75,
+        price : 80,
         inCart : 0
     },
     {

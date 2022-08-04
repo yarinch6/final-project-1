@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<!-- Website template by freewebsitetemplates.com -->
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Mustache Enthusiast</title>
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<link rel="stylesheet" type="text/css" href="css/mobile.css" media="screen and (max-width : 568px)">
+		<script type="text/javascript" src="js/mobile.js"></script>
+		<script src="login.js"></script>
+	</head>
+
+<body>
+
+	<div id="body">
+		<h2>Login Form</h2>
+		<form action="index.html">
+
+			<label for="name">
+				<span>User Name</span>
+				<input type="text" id="username">
+			</label>
+			<label for="Password">
+				<span>Password</span>
+				<input type="password" id="password">
+			</label>
+
+			<p id="error"></p>
+
+			<input class="send" type="submit" id="login" value="Login" onclick="getFormValues()">
+			<input class="send" type="button" id="signup" value="Signup">
+
+			<a href="#" class="login-forgot-pass">forgot password?</a>
+		</form>
+	</div>
+	<div id="footer">
+		<div>
+			<span>Tel-Aviv | Israel</span>
+			<p>
+				&copy; 2023 by Nofar Cohen &amp; Sharon Refai &amp; Raz Basteker. All rights reserved.
+			</p>
+		</div>
+
+	</div>
+</body>
+
+</html>
