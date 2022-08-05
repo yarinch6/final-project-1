@@ -1,3 +1,5 @@
+const UserRouter = require("./Server/routes/userRouter");
+const ProductRouter = require("./Server/routes/productsRouter")
 const express = require('express')
 const axios = require('axios')
 const { query } = require('express')
@@ -14,7 +16,7 @@ app.use(cors({ credentials: true, origin: "http://localhost:3000", exposedHeader
 app.use(express.static('public'))
 
 
-const BASE_URL = "http://127.0.0.1:3000"
+const BASE_URL = "http://localhost:3000"
 api = axios.create({
   baseURL: BASE_URL,
   headers: {
@@ -23,6 +25,7 @@ api = axios.create({
 
   withCredentials: true,
 });
+
 //db connection --------------------------------------------------------------
 mongoose.connect(process.env.ATLAS_URI)
 const connection = mongoose.connection;
@@ -30,26 +33,23 @@ app.use(express.urlencoded({ extended: false }));
 
 connection.once("open", () => {
   console.log("database connetion established");
-  login(user)
-
+  add()
 });
 
 
 
 // Routing 
-const UserRouter = require("./Server/routes/userRouter");
 app.use('/users',UserRouter)
+app.use('/products',ProductRouter)
+app.listen(port,()=>{console.log(`Server is listening on ${port}`)})
 
- function login(user) {
-  console.log("adding user")
-  res = api.post("/users",user).catch((err) => console.error(err))
-
-}
-  let user={
-    username:"admin",
-    password:"123456"
+function add(){
+  user={
+    username:"shiraz",
+    password:"shiraz",
   }
-
+  res = api.post("users/add",user).then(res => console.log(res)).catch(err => console.error(err))
+}
 
 
 app.get('/getResult', (req, res) => {

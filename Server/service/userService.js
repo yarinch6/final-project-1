@@ -12,10 +12,10 @@ const getUserByUsernameOrEmail = async (username, email) => {
 };
 
 const addUser = async (user) => {
-  console.log("inside USERSERVICE")
   const username = user.username;
   const password = user.password;
   const newUser = new User({ username , password });
+
   return await newUser.save();
 };
 const updateUser = async (id, user) => {

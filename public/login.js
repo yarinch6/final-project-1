@@ -1,97 +1,59 @@
-function load() {
+function userLogin() {
     // Add button event listeners
-   
-    const loginButton = document.getElementById("login");
-    loginButton.addEventListener("click", login);
-    const signupButton = document.getElementById("signup");
-    signupButton.addEventListener("click", signup);
+    const username = document.getElementById("username").value
+    const password = document.getElementById("password").value
+    fetch("http://localhost:3000/users/all")
+    .then((response) =>  result = response.json())
+    .then((result) => {
+    //  const result = JSON.parse(resultText);
+        result.forEach(user => {
+            if(user.username === username && user.password === password){  
+            window.localStorage.setItem("id", user._id);
+            // redirect
+            window.location.href = "index.html";
+            alert("Login Seccesful!")
+          }
+        })
+        setError("User Not Found ...");
+      } 
+    )
+    .catch((error) => {
+      console.error(error);
+      setError("Loging in incounterd an Error...");
+    });
   }
 
-  function getFormValues() {
-    const username = document.getElementById("username").value;
-    const password = document.getElementById("password").value  ;
-    alert(user)
-    return [username.value, password.value];
-  }
-  
   function setError(error) {
     const err = document.getElementById("error");
     err.innerHTML = error;
   }
-  
-  function login() {
-    // setError("");
-    const [username, password] = getFormValues();
-    if (username.length === 0 || password.length === 0) {
-      setError("Please enter username and password!");
-      return;
+
+  function signUp(){
+   
+    const username = document.getElementById("username").value
+    const password = document.getElementById("password").value
+    const user ={
+      username: username,
+      password: password,
     }
-  
-    var myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
-    var raw = JSON.stringify({
-      username,
-      password,
-    });
-  
-    var requestOptions = {
-      method: "POST",
-      headers: myHeaders,
-      body: raw,
-    };
-  
-    fetch("http://localhost:3000/login", requestOptions)
-      .then((response) => response.text())
-      .then((resultText) => {
-        const result = JSON.parse(resultText);
-        if (result.success) {
-          // save the token
-          window.localStorage.setItem("id", result.user._id);
-          // redirect
-          window.location.href = "index.html";
-        } else {
-          setError(result.error);
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-        setError("Error in login");
-      });
+    fetch("http://localhost:3000/users/add",{
+      method:"POST",
+      headers:  {
+        'Content-Type': 'application/json',
+        withCredentials: true
+      },
+      body:JSON.stringify(user),
     }
-  
-  function signup() {
-    setError("");
-    const [username, password] = getFormValues();
-  
-    var myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
-    var raw = JSON.stringify({
-      username,
-      email: username,
-      password,
+    ).then((response) => response.text())
+    .then((data) => {
+      const result =  JSON.parse(data);
+      console.log('Success:', result);
+      alert("Signed Up Seccesfuly")
+
+    })
+    .catch((error) => {
+      console.error('Error:', error);
     });
-  
-    var requestOptions = {
-      method: "POST",
-      headers: myHeaders,
-      body: raw,
-    };
-  
-    fetch("http://localhost:3000/register", requestOptions)
-      .then((response) => response.text())
-      .then((resultText) => {
-        const result = JSON.parse(resultText);
-        if (result.success) {
-          // save the token
-          localStorage.setItem("id", result.id);
-          alert("Signup successful, login to continue");
-        } else {
-          setError(result.error);
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-        setError("Error in login");
-      });
   }
+
   

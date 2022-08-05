@@ -581,7 +581,10 @@ p a:hover {
 	display: flex;
 	flex-wrap: wrap;
 }
-
+#error{
+	font-size: large;
+	color: red;
+}
 .products img {
 	width: 120px;
 }

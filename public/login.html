@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <!-- Website template by freewebsitetemplates.com -->
 <html>
 
@@ -8,15 +8,15 @@
 		<title>Mustache Enthusiast</title>
 		<link rel="stylesheet" type="text/css" href="css/style.css">
 		<link rel="stylesheet" type="text/css" href="css/mobile.css" media="screen and (max-width : 568px)">
-		<script type="text/javascript" src="js/mobile.js"></script>
-		<script src="login.js"></script>
+		<!-- <script type="text/javascript" src="js/mobile.js"></script> -->
+		<script src="./login.js"></script>
 	</head>
 
 <body>
 
 	<div id="body">
 		<h2>Login Form</h2>
-		<form action="index.html">
+		<form action="login.html" >
 
 			<label for="name">
 				<span>User Name</span>
@@ -27,11 +27,10 @@
 				<input type="password" id="password">
 			</label>
 
+			<input class="send" type="button" id="login" value="Login" onclick="userLogin()">
+			<input class="send" type="button" id="signup" value="Signup" onclick="signUp()">
 			<p id="error"></p>
-
-			<input class="send" type="submit" id="login" value="Login" onclick="getFormValues()">
-			<input class="send" type="button" id="signup" value="Signup">
-
+			
 			<a href="#" class="login-forgot-pass">forgot password?</a>
 		</form>
 	</div>

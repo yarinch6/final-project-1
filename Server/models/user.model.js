@@ -2,20 +2,20 @@ const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
 
-const userSchema = new Schema(
+const usersSchema = new Schema(
   {
     username: {
       type: String,
       required: true,
       unique: true,
       trim: true,
-      minlength: 3,
+      minlength: 4,
     },
     password: {
       type: String,
       required: true,
       trim: true,
-      minlength: 3,
+      minlength: 4,
     },
     isAdmin: {
       type: Boolean,
@@ -27,5 +27,5 @@ const userSchema = new Schema(
   }
 );
 
-const User = mongoose.model("User", userSchema);
+const User = mongoose.model("Users", usersSchema);
 module.exports = User;
