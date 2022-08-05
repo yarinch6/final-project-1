@@ -33,7 +33,6 @@ app.use(express.urlencoded({ extended: false }));
 
 connection.once("open", () => {
   console.log("database connetion established");
-  add()
 });
 
 
@@ -42,15 +41,6 @@ connection.once("open", () => {
 app.use('/users',UserRouter)
 app.use('/products',ProductRouter)
 app.listen(port,()=>{console.log(`Server is listening on ${port}`)})
-
-function add(){
-  user={
-    username:"shiraz",
-    password:"shiraz",
-  }
-  res = api.post("users/add",user).then(res => console.log(res)).catch(err => console.error(err))
-}
-
 
 app.get('/getResult', (req, res) => {
 

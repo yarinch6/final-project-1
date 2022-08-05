@@ -23,6 +23,7 @@ function newProduct(){
       .then((data) => {
         const result =  JSON.parse(data);
         console.log('Success:', result);
+        alert("Product add successful")
       })
       .catch((error) => {
         console.error('Error:', error);
